@@ -1,0 +1,11 @@
+{
+    "name": "Consignee",
+    "alias": "consignee",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Consignee\\Providers\\ConsigneeServiceProvider"
+    ],
+    "files": []
+}

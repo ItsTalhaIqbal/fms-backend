@@ -1,0 +1,11 @@
+{
+    "name": "Port",
+    "alias": "port",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Port\\Providers\\PortServiceProvider"
+    ],
+    "files": []
+}
