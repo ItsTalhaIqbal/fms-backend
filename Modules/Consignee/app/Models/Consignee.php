@@ -11,3 +11,4 @@ class Consignee extends Model
 
     protected $fillable = ['name', 'address', 'address_continued', 'status'];
 }
+ 

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Modules\Vendor\Http\Controllers\VendorController;
 
-Route::middleware(['auth:sanctum'])->prefix('vendor')->group(function () {
+Route::middleware(['auth:sanctum'])->prefix('vendors')->group(function () {
     Route::get('/', [VendorController::class, 'index']);
     Route::post('/', [VendorController::class, 'store']);
     Route::get('/{id}', [VendorController::class, 'show']);

@@ -10,13 +10,13 @@ class company extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     */
-    protected $fillable = [];
-
-    // protected static function newFactory(): CompaniesFactory
-    // {
-    //     // return CompaniesFactory::new();
-    // }
+    protected $fillable = [
+        'name',
+        'slug',
+        'email',
+        'contact',
+        'address',
+        'logo',
+        'website',
+    ];
 }

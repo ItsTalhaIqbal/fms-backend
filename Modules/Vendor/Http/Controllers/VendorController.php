@@ -8,19 +8,20 @@ use Modules\Vendor\App\Models\Vendor;
 
 class VendorController extends Controller
 {
-   public function index()
-{
-    $vendors = Vendor::paginate(5); // 5 items per page
-    return response()->json($vendors);
-}
-
+    public function index()
+    {
+        $vendors = Vendor::paginate(5); // 5 items per page
+        return response()->json($vendors);
+    }
 
     public function store(Request $request)
     {
-        $vendor = Vendor::create($request->validate([
-            'name' => 'required|string',
+        $validated = $request->validate([
+            'name' => 'required|string|unique:vendors,name',
             'status' => 'in:active,disabled',
-        ]));
+        ]);
+
+        $vendor = Vendor::create($validated);
 
         return response()->json([
             'message' => 'Vendor created successfully.',
@@ -40,7 +41,7 @@ class VendorController extends Controller
         $vendor = Vendor::findOrFail($id);
 
         $validated = $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|unique:vendors,name,' . $id,
             'status' => 'in:active,disabled',
         ]);
 
