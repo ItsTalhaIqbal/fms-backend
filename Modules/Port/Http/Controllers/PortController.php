@@ -5,14 +5,25 @@ namespace Modules\Port\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Port\App\Models\Port;
-
 use Illuminate\Validation\Rule;
 
 class PortController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Port::all());
+        // Har page pe 5 ports
+        $ports = Port::paginate(5);
+
+        // Table format me response
+        return response()->json([
+            'data' => $ports->items(), // current page ka data
+            'current_page' => $ports->currentPage(),
+            'per_page' => $ports->perPage(),
+            'total' => $ports->total(),
+            'last_page' => $ports->lastPage(),
+            'from' => $ports->firstItem(),
+            'to' => $ports->lastItem(),
+        ]);
     }
 
     public function store(Request $request)

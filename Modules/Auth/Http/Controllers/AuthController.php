@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
-use App\Models\User;
+use Modules\Auth\App\Models\User;
 
 class AuthController extends Controller
 {

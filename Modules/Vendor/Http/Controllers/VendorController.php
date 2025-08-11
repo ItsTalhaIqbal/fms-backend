@@ -8,11 +8,12 @@ use Modules\Vendor\App\Models\Vendor;
 
 class VendorController extends Controller
 {
-    public function index()
-    {
-        // You can include shipper count or related if needed
-        return response()->json(Vendor::all());
-    }
+   public function index()
+{
+    $vendors = Vendor::paginate(5); // 5 items per page
+    return response()->json($vendors);
+}
+
 
     public function store(Request $request)
     {

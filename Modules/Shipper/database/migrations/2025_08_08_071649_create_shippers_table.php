@@ -34,7 +34,13 @@ return new class extends Migration
      * Reverse the migrations.
      */
     public function down(): void
-    {
-        Schema::dropIfExists('shippers');
-    }
+{
+    Schema::table('shippers', function (Blueprint $table) {
+        $table->dropForeign(['vendor_id']);
+        $table->dropUnique(['vendor_id', 'name']);
+    });
+
+    Schema::dropIfExists('shippers');
+}
+
 };

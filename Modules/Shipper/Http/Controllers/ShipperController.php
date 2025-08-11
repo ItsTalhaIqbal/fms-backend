@@ -8,11 +8,20 @@ use Modules\Shipper\App\Models\Shipper;
 
 class ShipperController extends Controller
 {
-    // List all shippers with vendor
-    public function index()
+    // List all shippers with vendor (paginated)
+    public function index(Request $request)
     {
-        $shippers = Shipper::with('vendor')->get();
-        return response()->json($shippers);
+        $shippers = Shipper::with('vendor')->paginate(5);
+
+        return response()->json([
+            'data' => $shippers->items(),
+            'current_page' => $shippers->currentPage(),
+            'per_page' => $shippers->perPage(),
+            'total' => $shippers->total(),
+            'last_page' => $shippers->lastPage(),
+            'from' => $shippers->firstItem(),
+            'to' => $shippers->lastItem(),
+        ]);
     }
 
     // Store new shipper
